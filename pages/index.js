@@ -87,7 +87,7 @@ function index() {
                     </div>
                     <div className="font-medium text-md flex">
                       <span className="text-gray-500">Url :</span>
-                      <span className="px-1 font-semibold hover:text-gray-700"><a target="_blank" href="{{ $item->url }}"> {item.url.substring(8)}</a></span>
+                      <span className="px-1 font-semibold hover:text-gray-700"><a target="_blank" href={item.url}> {item.url.substring(8)}</a></span>
                     </div>
                   </div>
                 </div>
