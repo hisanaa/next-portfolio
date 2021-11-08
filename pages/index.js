@@ -74,7 +74,7 @@ function index() {
                 {portfolio.map((item) => (
                 <div className="bg-custom-gray shadow-lg rounded-md overflow-hidden py-0 border">
                   <div className="w-full">
-                    <img className="object-contain h-full" src={`http://127.0.0.1:8000/storage/${item.thumbnail}`} alt />
+                    <img className="object-contain h-full" src='https://user-images.githubusercontent.com/93656221/140781957-96ca98be-de7e-49d5-a318-9744f835bf57.png' alt />
                   </div>
                   <div className=" p-5 ">
                     <div className="font-medium text-md flex">
