@@ -1,6 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
+import axios from 'axios'
 
 function index() {
+  const [portfolio, setPortfolio] = useState([])
+
+  const getPortfolio = () => {
+    axios.get('http://127.0.0.1:8000/api/portfolio/featured')
+    .then(res => {
+      console.log(res.data.data)
+        setPortfolio(res.data.data)
+    })
+  }
+
+  useEffect(() => {
+    getPortfolio()
+  }, [])
+
   return (
     <>
       {/* mobile view */}
@@ -17,7 +33,7 @@ function index() {
           {/* about me */}
           <div className="w-full justify-center items-center flex flex-col bg-custom-gray p-5">
             <div className="bg-red-400 w-32 h-32 border-4 border-purple-600 rounded-full overflow-hidden">
-              <img className="object-contain" src="{{ asset('img/pp.jpg') }}" alt />
+              <img className="object-contain" src={`http://127.0.0.1:8000/storage/thumbnail/pp.jpg`} alt />
             </div>
             <h1 className="text-lg font-medium pt-2">ARIF SAIFUDIN</h1>
             <h1 className="text-4xl text-purple-500 font-bold pb-2">WEB DEVELOPER</h1>
@@ -55,34 +71,33 @@ function index() {
               </div>
               {/* content */}
               <div className="grid grid-cols-4 gap-5">
-                <div className="bg-custom-gray shadow-lg rounded-md overflow-hidden py-2">
+                {portfolio.map((item) => (
+                <div className="bg-custom-gray shadow-lg rounded-md overflow-hidden py-0 border">
                   <div className="w-full">
-                    <img className="object-contain h-full" src="{{ asset('storage/'. $item->thumbnail ) }}" alt />
+                    <img className="object-contain h-full" src={`http://127.0.0.1:8000/storage/${item.thumbnail}`} alt />
                   </div>
                   <div className=" p-5 ">
                     <div className="font-medium text-md flex">
                       <span className="text-gray-500">Project On :</span>
-                      <span className="px-1 font-semibold"></span>
+                      <span className="px-1 font-semibold">{item.project_on}</span>
                     </div>
                     <div className="font-medium text-md flex">
                       <span className="text-gray-500">Tools :</span>
-                      <span className="px-1 font-semibold">[]</span>
+                      <span className="px-1 font-semibold">[{item.tools}]</span>
                     </div>
                     <div className="font-medium text-md flex">
                       <span className="text-gray-500">Url :</span>
-                      <span className="px-1 font-semibold hover:text-gray-700"><a target="_blank" href="{{ $item->url }}"> </a></span>
-                    </div>
-                    <div className="flex items-center pt-2">
-                      <div className="flex "> 
-                        <a href="{{ redirect()->to($item->url) }}" className="bg-purple-600 items-center hover:bg-purple-700 h-10 rounded text-white text-center px-5 font-semibold">Show Portfolio</a>
-                      </div>
+                      <span className="px-1 font-semibold hover:text-gray-700"><a target="_blank" href="{{ $item->url }}"> {item.url.substring(8)}</a></span>
                     </div>
                   </div>
                 </div>
+                ))}
               </div>
               {/* action */}
               <div className="flex justify-center font-semibold uppercase pt-5 text-purple-600 hover:text-purple-700">
-                <a href="/portfolio">More Data Portfolio</a>
+                <Link href='/portfolio'>
+                  <a>More Data Portfolio</a>
+                </Link>
               </div>
             </div>
           </div>
