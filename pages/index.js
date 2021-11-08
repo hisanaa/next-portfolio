@@ -6,7 +6,7 @@ function index() {
   const [portfolio, setPortfolio] = useState([])
 
   const getPortfolio = () => {
-    axios.get('http://127.0.0.1:8000/api/portfolio/featured')
+    axios.get('https://backend-ezzaportfolio.herokuapp.com/api/portfolio/featured')
     .then(res => {
       console.log(res.data.data)
         setPortfolio(res.data.data)
@@ -33,7 +33,7 @@ function index() {
           {/* about me */}
           <div className="w-full justify-center items-center flex flex-col bg-custom-gray p-5">
             <div className="bg-red-400 w-32 h-32 border-4 border-purple-600 rounded-full overflow-hidden">
-              <img className="object-contain" src={`http://127.0.0.1:8000/storage/thumbnail/pp.jpg`} alt />
+              <img className="object-contain" src={`https://backend-ezzaportfolio.herokuapp.com/storage/thumbnail/pp.jpg`} alt />
             </div>
             <h1 className="text-lg font-medium pt-2">ARIF SAIFUDIN</h1>
             <h1 className="text-4xl text-purple-500 font-bold pb-2">WEB DEVELOPER</h1>

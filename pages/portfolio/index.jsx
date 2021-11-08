@@ -9,7 +9,7 @@ function index() {
 
     // function get data
     const getPortfolio = () => {
-        axios.get('http://127.0.0.1:8000/api/portfolio')
+        axios.get('https://backend-ezzaportfolio.herokuapp.com/api/portfolio')
         .then(res => {
             console.log(res)
             setActive(res.data.dataActive)
