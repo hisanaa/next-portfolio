@@ -33,7 +33,7 @@ function index() {
           {/* about me */}
           <div className="w-full justify-center items-center flex flex-col bg-custom-gray p-5">
             <div className="bg-red-400 w-32 h-32 border-4 border-purple-600 rounded-full overflow-hidden">
-              <img className="object-contain" src={`https://backend-ezzaportfolio.herokuapp.com/storage/thumbnail/pp.jpg`} alt />
+              <img className="object-contain" src='https://user-images.githubusercontent.com/93656221/140810387-1fd8e153-ff57-4a73-8c73-dbf47127dbb6.jpg' alt />
             </div>
             <h1 className="text-lg font-medium pt-2">ARIF SAIFUDIN</h1>
             <h1 className="text-4xl text-purple-500 font-bold pb-2">WEB DEVELOPER</h1>
@@ -74,7 +74,7 @@ function index() {
                 {portfolio.map((item) => (
                 <div className="bg-custom-gray shadow-lg rounded-md overflow-hidden py-0 border">
                   <div className="w-full">
-                    <img className="object-contain h-full" src='https://user-images.githubusercontent.com/93656221/140781957-96ca98be-de7e-49d5-a318-9744f835bf57.png' alt />
+                    <img className="object-contain h-full" src={item.thumbnail} alt={item.url} />
                   </div>
                   <div className=" p-5 ">
                     <div className="font-medium text-md flex">
